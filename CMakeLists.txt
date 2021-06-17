@@ -9,8 +9,11 @@ add_subdirectory(${googleTestDir})
 include_directories(${googleTestDir}/googletest/include)
 include_directories(${googleTestDir}/googlemock/include)
 
-add_executable(${PROJECT_NAME} main.cpp ./test/test.cpp)
+add_executable(${PROJECT_NAME} main.cpp test/call.cpp test/closure.cpp)
+
+# 链接libffi
 target_link_libraries(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/libffi/lib/libffi.a ${PROJECT_SOURCE_DIR}/libffi/lib/libffi_convenience.a)
 
+# 链接google的测试库
 target_link_libraries(${PROJECT_NAME}  gtest gtest_main)
 target_link_libraries(${PROJECT_NAME}  gmock gmock)
